@@ -97,6 +97,10 @@
     <Compile Include="Migrations\202003191156146_Mig_2020_03_19_1.Designer.cs">
       <DependentUpon>202003191156146_Mig_2020_03_19_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003210307166_Mig_2020_03_21_1.cs" />
+    <Compile Include="Migrations\202003210307166_Mig_2020_03_21_1.Designer.cs">
+      <DependentUpon>202003210307166_Mig_2020_03_21_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NpgsqlContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +118,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003191156146_Mig_2020_03_19_1.resx">
       <DependentUpon>202003191156146_Mig_2020_03_19_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003210307166_Mig_2020_03_21_1.resx">
+      <DependentUpon>202003210307166_Mig_2020_03_21_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

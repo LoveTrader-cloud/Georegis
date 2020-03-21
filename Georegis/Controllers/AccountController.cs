@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Context;
 using Georegis.Models;
 using Georegis.Models;
 using Microsoft.AspNet.Identity;
@@ -15,6 +16,8 @@ namespace AspNetIdentityApp.Controllers
 {
     public class AccountController : Controller
     {
+
+        NpgsqlContext dbContext = new NpgsqlContext();
         private ApplicationUserManager UserManager
         {
             get
@@ -35,8 +38,16 @@ namespace AspNetIdentityApp.Controllers
             {
                 ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email, Year = model.Year };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+
                 if (result.Succeeded)
                 {
+                    var pguser = dbContext.Users.Create();
+                    pguser.Login = user.UserName;
+                    pguser.Company = "Какая то фирма";
+                    pguser.Email = user.Email;
+                    dbContext.Users.Add(pguser);
+                    dbContext.SaveChanges();
                     return RedirectToAction("Login", "Account");
                 }
                 else

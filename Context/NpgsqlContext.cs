@@ -32,6 +32,7 @@ namespace Context
         {
             modelBuilder.Entity<DraftTask>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+            modelBuilder.Entity<User>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<User>().Property(t => t.Login).HasMaxLength(100);
             modelBuilder.Entity<User>().Property(t => t.FullName).HasMaxLength(150);
             modelBuilder.Entity<User>().Property(t => t.ShortName).HasMaxLength(100);
