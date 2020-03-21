@@ -49,7 +49,7 @@ namespace Georegis.Controllers
             var dep = dbContext.Departments.Create();
             dep.Title = model.Title;
             dep.Description = model.Description;
-            dep.CodeId = model.CodeId;
+            dep.DepartmentCode = model.DepartmentCode;
             dep.UserGroupManager = user;
             dbContext.Departments.Add(dep);
             dbContext.SaveChanges();
