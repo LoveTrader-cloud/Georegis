@@ -1,0 +1,21 @@
+﻿@model List<Entities.Department>
+
+
+<table>
+    <tr>
+        @foreach (var item in Model)
+        {
+        <td>
+            @item.CodeId
+        </td>
+        <td>
+            @item.Title
+        </td>
+        <td>
+            @item.Description
+        </td>
+        }
+    </tr>
+</table>
+ 
+@Html.ActionLink("Новое подразделение","RegNewDep", "Department")

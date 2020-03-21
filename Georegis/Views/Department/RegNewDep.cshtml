@@ -1,0 +1,44 @@
+﻿@model Georegis.Models.ViewModels.DepartmentViewModel
+
+@using (Html.BeginForm("SaveDep","Department", FormMethod.Post))
+{
+    <div>
+        <h4>новое подразделение</h4>
+        <hr />
+        
+        <div>
+            Название
+            <div>
+                @Html.EditorFor(model => model.Title)
+            </div>
+        </div>
+
+        <div>
+            Код подразделения
+            <div>
+                @Html.EditorFor(model => model.DepartmentCode)
+            </div>
+        </div>
+
+        <div>
+            Описание
+            <div>
+                @Html.EditorFor(model => model.Description)
+            </div>
+        </div>
+
+        <div>
+            Бригадир
+            <div>
+                @Html.DropDownListFor(model => model.ManagedBy, Model.UsersList)
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <input type="submit" value="Добавить подразделения" />
+            </div>
+        </div>
+    </div>
+}
+
