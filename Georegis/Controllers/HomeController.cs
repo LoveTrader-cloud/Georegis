@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Georegis.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,24 @@ namespace Georegis.Controllers
 {
     public class HomeController : MasterController
     {
-        public ActionResult Index(int page = 1)
+        public ActionResult Index()
         {
-            var curuser = CurrentUser.FullName;
-            return View(curuser);
+
+            return View();
         }
+
+        [Authorize]
+        public ActionResult Footer()
+        {
+            string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString();
+
+            var info = new AssemblyInfo { FullName = name, Version = version };
+            return PartialView(info);
+        }
+
+        [Authorize]
+        public ViewResult GetUser() => View(CurrentUser);
 
         public ActionResult About()
         {

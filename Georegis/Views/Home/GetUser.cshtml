@@ -1,0 +1,11 @@
+﻿@model Georegis.Models.ViewModels.CurrentUserViewModel
+
+@{
+    Layout = null;
+}
+<script type="text/javascript">
+    var userLogin = "@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.Login))";
+</script>
+<span style="font-weight:bold; color:#dcfedc;">@Model.FullName</span>
+<br />
+

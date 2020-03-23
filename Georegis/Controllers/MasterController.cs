@@ -28,10 +28,6 @@ namespace Georegis.Controllers
             ViewBag.OldBrowser = Request.Browser.MajorVersion <= 9 && (Request.Browser.Browser.Equals("InternetExplorer") || Request.Browser.Browser.Equals("IE"));
 
         }
-        // GET: Master
-        public ActionResult Index()
-        {
-            return View();
-        }
+
     }
 }
