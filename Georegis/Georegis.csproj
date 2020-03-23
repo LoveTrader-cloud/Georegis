@@ -198,15 +198,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\ViewModels\CurrentUserViewModel.cs" />
     <Compile Include="Models\ViewModels\DepartmentViewModel.cs" />
+    <Compile Include="Models\ViewModels\DraftTaskViewModel.cs" />
+    <Compile Include="Models\ViewModels\ExecDepViewModel.cs" />
+    <Compile Include="Models\ViewModels\ExecutorViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProcessSessionViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -257,6 +264,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Context\" />
+    <Folder Include="Views\Master\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

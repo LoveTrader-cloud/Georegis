@@ -104,7 +104,8 @@ namespace Georegis.Models.ViewModels
         /// <summary>/// 
         ///  Назначение на исполнение/согласование заявки
         /// </summary>
-        public virtual List<ExecDep> ExecDeps { get; set; }
+        public virtual List<ExecDepViewModel> ExecDeps { get; set; }
+
 
         public List<SelectListItem> UsersList { get; set; }
     }

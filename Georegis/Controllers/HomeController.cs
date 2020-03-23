@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace Georegis.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : MasterController
     {
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            return View();
+            var curuser = CurrentUser.FullName;
+            return View(curuser);
         }
 
         public ActionResult About()

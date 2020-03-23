@@ -59,14 +59,5 @@ namespace Georegis.Models.ViewModels
         /// </summary>
         public virtual DepartmentViewModel Department { get; set; }
 
-        /// <summary>
-        /// Подразделение в котором является руководителем
-        /// </summary>
-        public virtual List<DepartmentViewModel> ManagedDepartments { get; set; }
-
-        /// <summary>
-        /// Задачи сотрудника
-        /// </summary>
-        public virtual List<Executor> Executors { get; set; }
     }
 }
