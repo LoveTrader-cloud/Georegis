@@ -1,0 +1,1155 @@
+﻿/*
+    Описывает общую компоновку сайта и фиксы
+*/
+
+html {
+    height: 100%;
+}
+
+body {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    overflow: auto;
+    height: 100%;
+}
+
+.logo-top {
+    width: 226px;
+    height: 155px;
+    position: fixed;
+    z-index: 10;
+    margin-top: -50px;
+}
+
+.usermenu-top {
+    width: 320px;
+    height: 75px;
+    position: fixed;
+    z-index: 11;
+    margin-top: -50px;
+    background-color: #c7d7e8;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 18px rgba(0,0,0,0.4);
+    border: 1px dashed #314751;
+    color: #314751;
+    right: 16px;
+}
+
+.nav-usermenu-top {
+    list-style: none;
+    padding: 0px;
+    border-radius: 5px;
+    border: 1px solid rgb(152, 175, 200);
+    border-image: none;
+    height: 50px;
+    text-decoration: none;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
+    background-color: rgb(67, 99, 134);
+}
+
+.dropdown-usermenu-top li {
+    border-top: 1px solid #98afc8;
+    border-bottom: 1px solid #eef5fb;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.dropdown-usermenu-top a {
+    color: #5b82a3;
+}
+
+    .dropdown-usermenu-top a:hover {
+        color: #1c3c72;
+        text-decoration: none;
+        text-shadow: 0px 2px 2px #989ca2, 0px 0px 0px 0em grey;
+    }
+
+.logo-bottom {
+    width: 67px;
+    height: 62px;
+    position: fixed;
+    z-index: 10;
+    margin-top: 105px;
+}
+
+.otstup-logo-menu {
+    width: 200px;
+}
+
+.alert {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    border-top: 1px solid;
+    height: 37px;
+    width: 100%;
+}
+
+.statistica {
+    font-size: 12px;
+    margin-top: 4px;
+    font-family: segoe ui;
+}
+
+.middlecontent {
+    border: 1px solid;
+    border-radius: 3px;
+    min-height: 700px;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    text-align: left;
+}
+
+.topmenu {
+    z-index: 9;
+    height: 40px;
+    font-size: 20px;
+}
+
+.punctmenu {
+    max-width: 250px;
+    text-align: center;
+    height: 40px;
+    border-left: 1px solid;
+}
+
+.usermenu {
+    padding: 10px 10px;
+    font-size: 15px;
+    max-width: 320px;
+    text-align: center;
+    height: 23px;
+}
+
+.navbar {
+    min-height: 40px !important
+}
+
+.navbar-right > .dropdown > a {
+    padding-top: 5px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 20px;
+}
+
+.archiv {
+    font-size: 18px;
+    height: 40px;
+}
+
+label {
+    margin-bottom: 0;
+    line-height: 0.9em;
+}
+
+h2 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.h2-otstup-top {
+    margin-top: -8px;
+    display: inline-block;
+}
+
+.h2-otstup-bottom {
+    margin-bottom: -10px;
+}
+
+.h2-bold {
+    font-weight: bold;
+}
+
+.no-modal-close {
+    margin-top: -40px;
+    float: right;
+    width: 36px;
+    height: 37px;
+    text-decoration: none !important;
+}
+
+.zagolovformread {
+    text-align: left;
+    position: relative;
+    z-index: 2;
+    border-radius: 4px 4px 0 0;
+    font-size: 17px;
+    padding: 6px 6px;
+    font-family: Tahoma;
+    font-weight: bold;
+}
+
+.zagolovformread-light {
+    border: 1px solid;
+    border-radius: 4px 4px 0 0;
+    font-size: 17px;
+    padding: 7px 7px;
+    font-family: Tahoma;
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.link-decorate {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.fieldsformread {
+    border: 1px solid;
+    margin-top: -11px;
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    text-align: left;
+}
+
+.fixlabel {
+    width: 220px;
+}
+
+.fieldsformread > .table {
+    margin-top: 9px;
+    margin-bottom: 0;
+}
+
+.files-attachment-table {
+    border: 1px dashed;
+}
+
+    .files-attachment-table > thead > tr > th,
+    .files-attachment-table > tbody > tr > th,
+    .files-attachment-table > tfoot > tr > th,
+    .files-attachment-table > thead > tr > td,
+    .files-attachment-table > tbody > tr > td,
+    .files-attachment-table > tfoot > tr > td {
+        padding: 4px 6px 4px 6px;
+        font-family: 'Segoe UI';
+        border-bottom: 1px dashed;
+    }
+
+    .files-attachment-table a {
+        font-size: 14px;
+    }
+
+.usertable {
+    border: 1px solid;
+}
+
+    .usertable > thead > tr > th,
+    .usertable > tbody > tr > th,
+    .usertable > tfoot > tr > th,
+    .usertable > thead > tr > td,
+    .usertable > tbody > tr > td,
+    .usertable > tfoot > tr > td {
+        padding-top: 3px;
+        font-family: 'Segoe UI';
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .usertable > thead > tr > th, .usertable > tbody > tr > th, .usertable > tfoot > tr > th {
+        border-top: 1px solid;
+    }
+
+.row {
+    margin: 0;
+}
+
+.hrform-top {
+    height: 16px;
+    margin: 3px -15px 3px -15px;
+    border: 0;
+}
+
+.hrform-bottom {
+    height: 16px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border: 0;
+    margin-top: 30px;
+}
+
+.edit-fields-modalwind {
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid;
+}
+
+    .edit-fields-modalwind p {
+        margin-top: -5px;
+    }
+
+.margindivs-edit-fields-modalwind {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.panel-button {
+    margin-right: 0px;
+    margin-bottom: -5px;
+}
+
+.neitral-button {
+    margin-left: 3px;
+    margin-top: 1px;
+}
+
+.positive-button {
+    margin-left: 3px;
+    margin-top: 1px;
+}
+
+.passive-button {
+    margin-left: 3px;
+    margin-top: 3px;
+}
+
+.head-marshrutlist {
+    font-size: 13px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: Verdana;
+}
+
+.modal-header {
+    height: 45px;
+    border-bottom: 1px solid;
+}
+
+.modal-content {
+    text-align: left;
+}
+
+.modal-title {
+    margin-top: -5px;
+}
+
+.modal-footer {
+    border-top: 1px solid;
+    min-height: 45px;
+    padding-top: 2px;
+    padding-bottom: 10px;
+}
+
+.btn-xs {
+    font-size: 13px;
+}
+
+.noborder > td {
+    border: 0;
+}
+
+/* выравнивание полей в соответствии с высотой списка choosen */
+.input-filtr {
+    height: 30px;
+    padding: 3px 12px;
+}
+
+/*.modal-td-button {
+    width: 160px;
+    text-align: center;
+}*/
+
+/*.row-marshrutlist {
+    font-size: 12px;
+}*/
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.module-head {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*margin-top: 15px;*/
+    margin-bottom: 10px;
+}
+
+.uvedom-date {
+    border-right: 1px solid;
+    max-width: 105px;
+}
+
+.uvedom-information {
+    font-size: 16px;
+}
+
+.uvedom-icon {
+    width: 35px;
+    padding: 2px;
+}
+
+.nonew-uvedom-informarion {
+    font-style: italic;
+}
+
+.helptable td {
+    vertical-align: top;
+    text-align: left;
+    padding-bottom: 30px;
+}
+
+.helptable .punkt {
+    font-size: 28px;
+}
+
+.helptable p {
+    padding-top: 10px;
+}
+
+.bold {
+    font-weight: bold
+}
+
+.ourblocks table > thead > tr > th,
+.ourblocks table > tbody > tr > th,
+.ourblocks table > tfoot > tr > th,
+.ourblocks table > thead > tr > td,
+.ourblocks table > tbody > tr > td,
+.ourblocks table > tfoot > tr > td {
+    border-top: 0px solid;
+}
+
+.table-condensed > tbody > tr > td,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > td,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > thead > tr > th {
+    padding: 0px;
+    padding-left: 13px;
+}
+
+.our-table-condensed > tbody > tr > td,
+.our-table-condensed > tbody > tr > th,
+.our-table-condensed > tfoot > tr > td,
+.our-table-condensed > tfoot > tr > th,
+.our-table-condensed > thead > tr > td,
+.our-table-condensed > thead > tr > th {
+    border: 0px;
+}
+
+.table-noborder > tbody > tr > td,
+.table-noborder > tbody > tr > th,
+.table-noborder > tfoot > tr > td,
+.table-noborder > tfoot > tr > th,
+.table-noborder > thead > tr > td,
+.table-noborder > thead > tr > th {
+    border: 0px;
+}
+
+.zagolovki {
+    text-align: left;
+    font-weight: bold;
+}
+
+.edit-approver {
+    font-size: 12px;
+    font-family: Verdana;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.edit-link-cz {
+    font-size: 12px !important;
+    font-family: Verdana;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.preview-link-cz {
+    padding-left: 10px;
+    font-size: 14px !important;
+    font-family: Verdana;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.create-sz-approve {
+    text-align: right;
+    margin: -5px;
+}
+
+.body-moduls {
+    margin-top: 0px;
+    text-align: left;
+    padding-bottom: 1px;
+}
+
+.zagolovki-moduls {
+    font-size: 15px;
+    font-family: Tahoma;
+    font-weight: bold;
+    margin-left: 10px;
+    padding-bottom: 12px;
+    padding-top: 3px;
+    text-align: left;
+}
+
+.inf-doc {
+    border-right: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-top: 0px solid;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-state-disabled.ui-button:hover,
+html .ui-state-disabled.ui-button:active {
+    border: 1px solid;
+}
+
+.html .ui-state-disabled.ui-button:hover,
+html .ui-state-disabled.ui-button:active {
+    margin-left: -20px;
+    position: relative;
+    z-index: 1;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-state-active.ui-button:hover {
+    border: 1px solid;
+}
+
+    .ui-button:active, .ui-state-active.ui-button:hover {
+        position: relative;
+        z-index: 2;
+    }
+
+.ui-tabs .ui-tabs-nav {
+    padding: 0px;
+    margin: 0px;
+    border: 0px solid;
+}
+
+    .ui-tabs .ui-tabs-nav li {
+        margin: 0px;
+    }
+
+.block-with-vkladki {
+    padding: 0px;
+    border: 0px solid;
+}
+
+.block-under-vkladki {
+    margin-top: -14px;
+    border: 1px solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: left;
+    padding-top: 5px;
+    min-height: 350px;
+}
+
+.block-attach {
+    border: 1px solid !important;
+    margin-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.block-active-fields {
+    margin-top: -5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.block-editor-tinymce {
+    margin-top: -5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 99.8%;
+    float: left;
+}
+
+.mce-menubar {
+    border: 1px solid !important;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+    font-weight: bold;
+    font-family: Tahoma;
+    font-size: 17px;
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited, a.ui-button, a.ui-button:link, a.ui-button:visited, .ui-button {
+    font-weight: bold;
+    font-family: Tahoma;
+    font-size: 15px;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 23px;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 23px;
+}
+
+.podlojka {
+    max-width: 93%;
+    margin: auto;
+    min-height: 98%;
+    border-bottom: 1px solid;
+}
+
+.content-forms {
+    max-width: 1000px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.container-views {
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 1600px;
+}
+
+/*фиксирование миниммальной ширины некоторых столбцов в представлениях*/
+.fix-col-date {
+    min-width: 132px;
+}
+
+.fix-col-status {
+    min-width: 135px;
+}
+
+.fix-col-number {
+    min-width: 130px;
+}
+
+.fix-col-fio {
+    min-width: 250px;
+}
+
+.fix-col-tema {
+    min-width: 250px;
+}
+
+.pagination > li > a {
+    height: 22px;
+    padding-top: 2px !important;
+    font-size: 12px;
+}
+
+.pagination {
+    margin: 10px 0 5px 0 !important;
+}
+
+.ter th {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    font-family: Tahoma;
+}
+
+    .ter th > a {
+        text-decoration: underline;
+    }
+
+.table > tbody > tr > th {
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+
+.borders-views > thead > tr > th,
+.borders-views > tfoot > tr > th,
+.borders-views > thead > tr > td,
+.borders-views > tbody > tr > td,
+.borders-views > tfoot > tr > td {
+    border: 1px solid;
+}
+
+.chosen-container {
+    min-width: 150px;
+    width: 100%;
+}
+
+/*стили к модальным окнам*/
+.modal-header .close {
+    margin-top: -14px;
+    font-size: 35px;
+    opacity: 0.4;
+}
+
+    .modal-header .close:hover, .modal-header .close:focus {
+        opacity: 0.6;
+    }
+
+
+.search-form > .form-group {
+    min-height: 40px;
+}
+
+/*стиль к окну с загрузкой файлов*/
+.file-input-name {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8px;
+    height: 34px;
+    border: 1px dashed;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: -20px;
+    padding-left: 20px;
+}
+
+.buttons-loading-files {
+    min-width: 134px;
+}
+
+.important-message {
+    display: none;
+    padding: 3px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px dashed;
+    margin-bottom: 10px;
+}
+
+.files-attachment-table-modal {
+    border: 2px dashed;
+    min-width: 500px;
+}
+
+    .files-attachment-table-modal > thead > tr > th,
+    .files-attachment-table-modal > tbody > tr > th,
+    .files-attachment-table-modal > tfoot > tr > th,
+    .files-attachment-table-modal > thead > tr > td,
+    .files-attachment-table-modal > tbody > tr > td,
+    .files-attachment-table-modal > tfoot > tr > td {
+        padding: 4px 6px 4px 6px;
+        font-family: 'Segoe UI';
+        border-bottom: 1px dashed;
+        width: 0px;
+        white-space: nowrap;
+    }
+
+.files-attachment-table a {
+    font-size: 14px;
+}
+
+.files-attachment-table label, .files-attachment-table-modal label {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/*дополнительные инф.блоки на главной странице*/
+.topnote {
+    text-align: center;
+    height: 48px;
+    font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    vertical-align: top;
+    padding-top: 3px;
+}
+
+.middlenote {
+    border-right: solid 1px;
+    border-left: solid 1px;
+    padding-left: 10px;
+    padding-right: 5px;
+    font-size: 0.95em;
+}
+
+.botnote {
+    height: 51px;
+    font-size: 20px;
+}
+
+.btn-secondary {
+    border: 0;
+    padding-left: 30px;
+    margin-top: 5px;
+    font-family: verdana;
+    font-size: 13px;
+    font-weight: bold;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    height: 24px !important;
+}
+
+.btn-group-toggle > .active {
+    border: 0;
+}
+
+.btn-secondary:hover {
+    height: 24px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+.panel-function-uved {
+    display: inline-block;
+}
+
+.create-panel-uved {
+    margin-left: 20px;
+    margin-top: -2px;
+}
+
+.icon-dop-function {
+    height: 37px;
+    width: 72px;
+    float: right;
+    /*display: inline-block;*/
+    font-size: 9px;
+}
+
+    .icon-dop-function:hover {
+        height: 37px;
+        width: 72px;
+        float: right;
+        /*display: inline-block;*/
+        font-size: 9px;
+    }
+
+#contextMenu li > #btnAcquaintance {
+    height: 40px;
+}
+
+#contextMenu li > #btnAnswer {
+    height: 40px;
+}
+
+#contextMenu li > #btnPrint {
+    height: 40px;
+}
+
+#contextMenu li > #btnPDF {
+    height: 40px;
+}
+
+#contextMenu li > #btnPrintRes {
+    height: 40px;
+}
+
+#contextMenu > li > a {
+    padding-left: 40px;
+    font-size: 15px;
+    padding-top: 8px;
+    color: #1e4771;
+    font-weight: bold;
+}
+
+#contextMenu > .divider {
+    margin-top: 0px;
+}
+
+#contextMenu {
+    border: 1px solid;
+}
+
+.zametki-text {
+    font-size: 13px;
+}
+
+/*стили на вкладки модального окна назначения специалиста*/
+.tablinks {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 45px;
+    font-weight: bold;
+    font-family: Tahoma;
+    font-size: 15px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    margin-top: 5px;
+    border-bottom: 0px solid;
+}
+
+.tab-naznach {
+    overflow: hidden;
+    border: none;
+}
+
+.modal-naznach-area {
+    margin: 15px 20px 15px 20px;
+}
+
+.modal-naznach-main-row {
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-top-right-radius: 10px;
+}
+
+/*стили для инструкции по системе*/
+.left-top-help {
+    width: 43px;
+    height: 53px;
+}
+
+
+.top-help {
+    height: 53px;
+}
+
+.left-bottom-help {
+    width: 21px;
+    height: 53px;
+}
+
+.left-help {
+    width: 43px;
+}
+
+.left-zakladki-help {
+    width: 43px;
+    height: 209px;
+}
+
+.right-help {
+    width: 21px;
+}
+
+.right-top-help {
+    width: 21px;
+    height: 28px;
+}
+
+.bottom-help {
+    height: 28px;
+}
+
+.right-bottom-help {
+    width: 21px;
+    height: 28px;
+}
+
+.h2-help {
+    text-align: center;
+    font-family: tahoma;
+    font-size: 35px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.podzagolov {
+    font-size: 25px;
+    padding-top: 15px;
+}
+
+.a_help {
+    text-shadow: none;
+    font-family: Century Gothic;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.text-help {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+    .text-help img {
+        margin-left: -50px;
+    }
+
+
+    .text-help p {
+        text-indent: 1.5em;
+        padding-top: 3px;
+    }
+
+    .text-help u {
+        font-weight: bold;
+        font-style: italic;
+    }
+
+.ul_help li {
+    padding-top: 17px;
+}
+
+.img_help {
+    border: 2px dashed;
+    padding: 5px;
+    margin-top: 12px;
+}
+
+.oglavlenie-help {
+    font-size: 22px;
+}
+
+    .oglavlenie-help a:hover {
+        font-size: 22px;
+    }
+
+.rounded {
+    counter-reset: li;
+    list-style: none;
+    font: 20px "Trebuchet MS", "Lucida Sans";
+    padding: 0;
+    max-width: 830px;
+    padding-left: 32px;
+}
+
+    .rounded a {
+        position: relative;
+        display: block;
+        padding: .4em .4em .4em 2em;
+        margin: .5em 0;
+        text-decoration: none;
+        border-radius: .3em;
+        transition: .3s ease-out;
+    }
+
+        .rounded a:hover:before {
+            transform: rotate(360deg);
+        }
+
+        .rounded a:before {
+            content: counter(li);
+            counter-increment: li;
+            position: absolute;
+            left: -1.3em;
+            top: 50%;
+            margin-top: -1.3em;
+            height: 2em;
+            width: 2em;
+            line-height: 2em;
+            border: .3em solid white;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 2em;
+            transition: all .3s ease-out;
+        }
+
+/*стили для поиска*/
+#search {
+    width: 235px;
+    height: 29px;
+    float: right;
+}
+
+    #search input {
+        float: left;
+        border: none;
+    }
+
+    #search .input {
+        width: 235px;
+        height: 29px;
+        padding: 0 37px 1px 15px;
+        font: 13px/28px Tahoma, Arial, sans-serif;
+        outline: none;
+    }
+
+    #search .submit {
+        width: 37px;
+        height: 29px;
+        cursor: pointer;
+        margin-left: -37px;
+    }
+
+.icon-zametki-text {
+    text-decoration: underline;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/*временный пункт меню архив*/
+#SZ a {
+    font-weight: bold;
+    padding-left: 11px;
+    padding-right: 11px;
+    text-decoration: none !important;
+}
+
+    #SZ a:hover {
+        text-decoration: none !important;
+    }
+
+#SZ2 a {
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+.punctmenu-arhiv {
+    height: 57px;
+    border-right: 1px solid #263e56;
+}
+
+/*.col-lg-8 {
+    margin-top: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+}*/
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    margin-top: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.hide-refresh > .content > .module-head > .refresh-content {
+    display: none;
+}
+
+a {
+    cursor: pointer;
+}
+
+.form-footer .request-data {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.container > .navbar-header, .container > .navbar-collapse {
+    margin-left: -15px;
+}
+
+.container > .navbar-header, .container > .navbar-collapse {
+    margin-left: -15px;
+}
+
+.container-fluid {
+    margin-left: 8px;
+    margin-right: 15px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 10px;
+    line-height: 0.9em;
+}
+
+.list-filters {
+    padding: 10px;
+    border-radius: 15px;
+    border: dotted;
+    border-width: 4px;
+}

@@ -1,0 +1,29 @@
+﻿@model Georegis.Models.ViewModels.DraftTaskViewModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+            $('.edit-theme').click(function (e) {
+                var btn = $(this);
+                var id = btn.attr('data-value');
+
+                $('#modal-content').load('@Url.Action("EditThemeMemo", "Task")?id=' + id, function () {
+                    $('#modaldata').modal('show');
+                });
+            });
+
+        });
+</script>
+
+
+@if (string.IsNullOrEmpty(Model.Theme))
+{
+    <text>[Без темы]</text>
+}
+else
+{
+    <text>[@Model.Theme]</text>
+}
+<br />
+    <a class="edit-theme edit-link-cz" data-value="@Model.Id">Редактировать тему<img alt="Редактировать" src="~/Content/Images/Icons/editing.png" /></a>
+
+

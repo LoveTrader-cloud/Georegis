@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Ext.Net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Georegis.Models.ViewModels
 {
@@ -44,5 +46,10 @@ namespace Georegis.Models.ViewModels
         /// на кого назначено
         /// </summary>
         public virtual List<ExecutorViewModel> Executors { get; set; }
+
+        /// <summary>
+        /// список подразделений для назначения
+        /// </summary>
+        public List<ListItem> DepList { get; set; }
     }
 }

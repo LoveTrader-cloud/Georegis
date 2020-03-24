@@ -1,0 +1,29 @@
+﻿@model Georegis.Models.ViewModels.DraftTaskViewModel
+@using Ext.Net;
+@using Ext.Net.MVC;
+@(Html.X().ResourceManager())
+@{
+    ViewBag.Title = "Contact Form - Ext.NET MVC Examples";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var X = Html.X();
+}
+@(
+    Html.X().FormPanel()
+    .Layout(LayoutType.Form)
+    .Width(350)
+    .FieldDefaults(d =>
+    {
+        d.LabelWidth = 150;
+    })
+    .BodyPadding(10)
+    .Frame(true)
+    .Items(
+        Html.X().TextFieldFor(model => model.Theme),
+        Html.X().TextFieldFor(model => model.Text),
+        Html.X().DateFieldFor(model => model.DueDate),
+        Html.X().ComboBoxFor(model => model.DepList).Items(Model.DepList)
+    )
+)
+
+
+

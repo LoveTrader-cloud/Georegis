@@ -1,0 +1,713 @@
+﻿/* Пустая кнопка */
+.button-empty {
+    display: inline-block;
+    white-space: nowrap;
+    background-color: #ddd;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+    background-image: -webkit-linear-gradient(top, #eee, #ccc);
+    background-image: -moz-linear-gradient(top, #eee, #ccc);
+    background-image: -ms-linear-gradient(top, #eee, #ccc);
+    background-image: -o-linear-gradient(top, #eee, #ccc);
+    background-image: linear-gradient(top, #eee, #ccc);
+    border: 1px solid #777;
+    padding-left: 1.5em;
+    /*padding-right: 1.5em;*/
+    /*margin: 0.5em;*/
+    font: bold 1em/2em Arial, Helvetica;
+    text-decoration: none;
+    color: #333;
+    text-shadow: 0 1px 0 rgba(255,255,255,.8);
+    -moz-border-radius: .2em;
+    -webkit-border-radius: .2em;
+    border-radius: .2em;
+    -moz-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+    box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+}
+
+    .button-empty:active {
+        -moz-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+        -webkit-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+        box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+        position: relative;
+        top: 1px;
+        text-decoration: none;
+    }
+
+    .button-empty:focus {
+        outline: 0;
+        background: #fafafa;
+        text-decoration: none;
+    }
+
+    .button-empty:before {
+        background: #ccc;
+        background: rgba(0,0,0,.1);
+        float: left;
+        width: 1em;
+        text-align: center;
+        font-size: 1.5em;
+        margin: 0 1em 0 -1em;
+        padding: 0 .2em;
+        -moz-box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
+        -webkit-box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
+        box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
+        -moz-border-radius: .15em 0 0 .15em;
+        -webkit-border-radius: .15em 0 0 .15em;
+        border-radius: .15em 0 0 .15em;
+        pointer-events: none;
+    }
+
+    .button-empty:hover {
+        background-color: #eee;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#ddd));
+        background-image: -webkit-linear-gradient(top, #fafafa, #ddd);
+        background-image: -moz-linear-gradient(top, #fafafa, #ddd);
+        background-image: -ms-linear-gradient(top, #fafafa, #ddd);
+        background-image: -o-linear-gradient(top, #fafafa, #ddd);
+        background-image: linear-gradient(top, #fafafa, #ddd);
+        text-decoration: none;
+    }
+
+
+/* Оформлене кнопки с текстом */
+.button {
+    display: inline-block;
+    white-space: nowrap;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 1.5em;
+    padding-right: 0.7em;
+    margin: 0.5em 0.5em 0 0;
+    font: bold 16px/32px Arial, Helvetica;
+    text-decoration: none;
+    color: #333;
+    -moz-border-radius: .4em;
+    -webkit-border-radius: .4em;
+    border-radius: .4em;
+}
+
+    .button:hover {
+        /*background-color: #eee;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#ddd));
+        background-image: -webkit-linear-gradient(top, #fafafa, #ddd);
+        background-image: -moz-linear-gradient(top, #fafafa, #ddd);
+        background-image: -ms-linear-gradient(top, #fafafa, #ddd);
+        background-image: -o-linear-gradient(top, #fafafa, #ddd);
+        background-image: linear-gradient(top, #fafafa, #ddd);
+        text-decoration: none;*/
+    }
+
+    .button:active {
+        -moz-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+        -webkit-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+        box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+        position: relative;
+        top: 1px;
+        text-decoration: none;
+    }
+
+    .button:focus {
+        outline: 0;
+        text-decoration: none;
+    }
+
+    /* Для псевдоэлемента before */
+    .button:before {
+        background: #ccc;
+        background: rgba(0,0,0,.1);
+        float: left;
+        width: 1em;
+        text-align: center;
+        font-size: 1.5em;
+        margin: 0 1em 0 -1em;
+        padding: 0 .2em;
+        /* -moz-box-shadow: 1px 0px 0px rgba(0,0,0,0.2), 2px 0px 0px rgba(255,255,255,0.5);
+        -webkit-box-shadow: 1px 0px 0px rgba(0,0,0,0.2), 2px 0px 0px rgba(255,255,255,0.5);
+        box-shadow: 1px 0px 0px rgba(0,0,0,0.2), 2px 0px 0px rgba(255,255,255,0.5);
+        -moz-border-radius: .15em 0 0 .15em;
+        -webkit-border-radius: .15em 0 0 .15em;
+        border-radius: .15em 0 0 .15em;*/
+        pointer-events: none;
+    }
+
+.btn-puncts-exec {
+    font: bold 13px Arial, Helvetica !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin: 0px !important;
+}
+
+.mini-button {
+    font: bold 14px Arial, Helvetica;
+    padding: 4px 4px 4px 4px;
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+    margin-top: 0px;
+}
+
+/* Дополнения стиля button, если в нем будет картинка, а не текст */
+.button-ico {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin: 0;
+    font-size: 16px;
+}
+
+.show-list-isp {
+    color: #4c80b4;
+    font: 14px Arial, Helvetica !important;
+}
+
+/* Цветовое оформдение кнопок */
+.neitral {
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+    border: 1px solid #5b92cb;
+    background-color: #669dd5;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+
+.neitral-ico {
+    box-shadow: inset 0px 2px 15px rgba(0,0,0,0.3);
+    border: 1px solid #b0bcc8;
+    background-color: #e9eef4;
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+}
+
+    .neitral-ico img {
+        width: 28px;
+        height: 28px;
+    }
+
+.favorite-neitral-ico, .favorite-neitral-ico:active {
+    width: 37px;
+    height: 34px;
+    position: absolute;
+    box-shadow: inset 0px 2px 15px rgba(0,0,0,0.3);
+    border: 1px solid #b0bcc8;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #e9eef4 !important;
+    border-radius: .4em;
+}
+
+.neitral-ico-shadowkd {
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.4) !important;
+}
+
+.td-width-ico {
+    padding-left: 2px !important;
+    width: 163px;
+}
+
+.neitral2:focus, .neitral2:before {
+    background-color: #3577ba;
+}
+
+
+.neitral:hover {
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+    border: 1px solid #3577ba;
+    background-color: #2e6eb0;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+.neitral:before, .positiv:before, .negativ:before {
+    margin: 0 0em 0 -1em;
+}
+
+.positiv {
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+    border: 1px solid #5b92cb;
+    background-color: #669dd5;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+    .positiv:hover {
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+        border: 1px solid #3577ba;
+        background-color: #2e6eb0;
+        color: #ffffff;
+        text-shadow: none;
+    }
+
+.negativ {
+    text-shadow: none;
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+    border: 1px solid #5b92cb;
+    background-color: #669dd5;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+    .negativ:hover {
+        color: #ffffff;
+        border: 1px solid #3577ba;
+        background-color: #2e6eb0;
+        text-shadow: none;
+    }
+
+
+    .negativ:focus, .negativ:before {
+        background-color: #2e6eb0;
+    }
+
+.orange {
+    padding-left: 1.5em !important;
+    padding-right: 0.5em !important;
+    background-color: #ddd !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ffc892)) !important;
+    background-image: -webkit-linear-gradient(top, #fff, #ffc892) !important;
+    background-image: -moz-linear-gradient(top, #fff, #ffc892) !important;
+    background-image: -ms-linear-gradient(top, #fff, #ffc892) !important;
+    background-image: -o-linear-gradient(top, #fff, #ffc892) !important;
+    background-image: linear-gradient(top, #fff, #ffc892) !important;
+    color: #0b4a7f !important;
+    border: 1px solid #c59862 !important;
+}
+
+    .orange:hover {
+        background: #fbc790 !important;
+    }
+/*-----------------------------------------------------------------------------------------------------------*/
+
+
+/* Buttons and inputs */
+
+button.button, input.button {
+    cursor: pointer;
+    overflow: visible; /* removes extra side spacing in IE */
+}
+
+/* removes extra inner spacing in Firefox */
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/* If line-height can't be modified, then fix Firefox spacing with padding */
+input::-moz-focus-inner {
+    padding: .4em;
+}
+
+/* The disabled styles */
+.button[disabled], .button[disabled]:hover, .button.disabled, .button.disabled:hover {
+    background: #eee;
+    color: #aaa;
+    border-color: #aaa;
+    cursor: default;
+    text-shadow: none;
+    position: static;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/* Символы URF в шестнадцатиричной системе */
+:before {
+    box-sizing: content-box;
+}
+
+.add-utf:before {
+    content: "\271A";
+}
+
+.edit-utf:before {
+    content: "\270E";
+}
+
+.delete:before {
+    content: "\2718";
+}
+
+.save:before {
+    content: "\2714";
+}
+
+.email-utf:before {
+    content: "\2709";
+}
+
+.clip-utf:before {
+    content: "\1F4CE";
+}
+
+.like-utf:before {
+    content: "\2764";
+}
+
+.next-utf:before {
+    content: "\279C";
+}
+
+.star-utf:before {
+    content: "\2605";
+}
+
+.spark-utf:before {
+    content: "\2737";
+}
+
+.play-utf:before {
+    content: "\25B6";
+}
+
+.search-utf:before {
+    content: "\1f50d";
+}
+
+.up-utf:before {
+    content: "\25b4";
+}
+
+.down-utf:before {
+    content: "\25be";
+}
+
+.cross-utf:before {
+    content: "\2718";
+}
+
+.se-utf:before {
+    content: "\2718";
+}
+/***********/
+
+/* Перед кнопками с текстом ставим иконки */
+.add:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/add_new.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.copy:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/copy_sz_1.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.cross:before {
+    content: "";
+    float: left;
+    width: 30px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/new_close3.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.delete:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/edittrash_new.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.up:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/arrow_top_new.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.down:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/arrow_bottom_new.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.clip:before {
+    content: "";
+    float: left;
+    width: 30px;
+    height: 30px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/clip.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.save:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/save_new2.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.mark:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/mark.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.mark-mini:before {
+    content: "";
+    float: left;
+    width: 20px;
+    height: 17px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/mark-mini.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+
+.next:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/next_gray.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+
+.important-uved:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/important_uved.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.info-uved:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/info_uved.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.edit:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/edit.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.search:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/search.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.filter:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/filter.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.export:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/csvexport.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.messages:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/messages.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.add-ispoln:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/add_ispoln.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.add-ispoln-mini:before {
+    content: "";
+    float: left;
+    width: 20px;
+    height: 17px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/add_ispoln-mini.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.oznakom:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/ring_uved.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.vernut:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/vozvrat2.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.vernut-mini:before {
+    content: "";
+    float: left;
+    width: 20px;
+    height: 17px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/vozvrat-mini.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.otmena-ispol:before {
+    content: "";
+    float: left;
+    width: 32px;
+    height: 32px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/otmena_ispol5.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.otmena-ispol-mini:before {
+    content: "";
+    float: left;
+    width: 20px;
+    height: 17px;
+    /*margin: 0 20px 0 0;*/
+    background: url(../Images/Icons/otmena_ispol-mini.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+/********/
+
+.search-icon {
+    /*width: 32px;
+    height: 32px;*/
+    /*padding:20px;*/
+    /*background: url(../Images/Icons/loupe.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;*/
+}
+
+.messages-icon {
+    /*width: 32px;
+    height: 32px;*/
+    /*padding:20px;*/
+    /*background: url(../Images/Icons/messages.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;*/
+}
+
+
+
+.button a:hover, .button a::before, .button a:focus {
+    text-decoration: none;
+}
+
+.btn-nolink:hover, .btn-nolink {
+    text-decoration: none;
+}

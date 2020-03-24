@@ -6,12 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Georegis.Helpers;
+using Context;
 
 namespace Georegis.Controllers
 {
     public class MasterController : Controller
     {
-
+        NpgsqlContext dbContext = new NpgsqlContext();
         /// <summary>
         /// Пользователь и вся информация о нем
         /// </summary>
