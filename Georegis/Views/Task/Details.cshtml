@@ -1,29 +1,66 @@
 ﻿@model Georegis.Models.ViewModels.DraftTaskViewModel
-@using Ext.Net;
-@using Ext.Net.MVC;
-@(Html.X().ResourceManager())
+
 @{
-    ViewBag.Title = "Contact Form - Ext.NET MVC Examples";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var X = Html.X();
 }
-@(
-    Html.X().FormPanel()
-    .Layout(LayoutType.Form)
-    .Width(350)
-    .FieldDefaults(d =>
-    {
-        d.LabelWidth = 150;
-    })
-    .BodyPadding(10)
-    .Frame(true)
-    .Items(
-        Html.X().TextFieldFor(model => model.Theme),
-        Html.X().TextFieldFor(model => model.Text),
-        Html.X().DateFieldFor(model => model.DueDate),
-        Html.X().ComboBoxFor(model => model.DepList).Items(Model.DepList)
-    )
-)
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnAssign").click(function (e) {
+            $("#btnAssign").prop("disabled", true);
+            var btn = $(this);
 
+            var jmodel = new Object();
+            jmodel.Id = '@Model.Id';
+            jmodel.Theme = $('#theme').val();
+            jmodel.Text = $('#text').val();
+            jmodel.DueDate = $('#dueDate').val();
+            jmodel.DepartmentExecute = $('#execDep').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SaveDetails")',
+                data: jmodel,
+                success: function (result)
+                {
+                    if (result.indexOf("ERROR") != -1)
+                        alert(result);
+                    $('#data').empty();
+                    window.location.replace(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        });
+    });
+</script>
+
+<div class="row modal-naznach-main-row">
+    <div id="Bureau" class="tabcontent">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <form id="EditForm">
+                    <div class="modal-body" id="modal-body">
+
+                        <label class="control-label">Задача</label><br />
+                        @Html.TextAreaFor(model => model.Theme, new Dictionary<string, object> { { "class", "form-control" }, { "id", "theme" } })
+                        <label class="control-label">Содержание</label><br />
+                        @Html.TextAreaFor(model => model.Text, new Dictionary<string, object> { { "class", "form-control" }, { "id", "text" } })
+                        <label class="control-label">Срок исполнения</label><br />
+                        @Html.TextBox("dueDate", Model.DueDate.ToString("dd.MM.yyyy"), new { @class = "form-control datepicker input-filtr", @placeholder = "Дата создания", @id = "dueDate" })
+                        <label class="control-label">Исполнитель</label><br />
+                        @Html.DropDownList("execDep", Model.DepList, new { @class = "combobox", @placeholder = "Согласующие", @attr_width = "230px", @id = "execDep" })
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" id="btnAssign" class="button positiv mark">Запустить в работу</button>
+    @*<button type="button" class="button neitral cross" data-dismiss="modal" onclick="ReloadBlockById('#process-route');">Закрыть</button>*@
+</div>
 

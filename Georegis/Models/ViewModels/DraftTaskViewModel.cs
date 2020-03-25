@@ -29,6 +29,8 @@ namespace Georegis.Models.ViewModels
         /// </summary>
         public DateTime DueDate { get; set; }
 
+        public int DepartmentExecute { get; set; }
+
 
         /// <summary>
         /// Сессия процесса по запросу
@@ -50,6 +52,6 @@ namespace Georegis.Models.ViewModels
         /// <summary>
         /// список подразделений для назначения
         /// </summary>
-        public List<ListItem> DepList { get; set; }
+        public List<SelectListItem> DepList { get; set; }
     }
 }

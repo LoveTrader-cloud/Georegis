@@ -1,0 +1,239 @@
+﻿@model Georegis.Models.Common.PageTuskViewModel
+@using PagedList.Mvc
+
+@{
+    /**/
+    int i = 0;
+    ViewBag.Title = "Мои задачи";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/layout-form.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .borders-views label {
+        color: #333;
+        font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        font-size: 15px;
+        font-weight: normal;
+    }
+</style>
+<script src="~/Scripts/combobox.js?@DateTime.Now.Millisecond"></script>
+<script src="~/Scripts/datetimepicker.js?@DateTime.Now.Millisecond"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.aHide').hide();
+        $('.bHide').hide();
+        $('.bShow').click(function (e) {
+            var btn = $(this);
+            var trid = btn.closest('tr').attr('id');
+            $('#executors-' + trid)[0].style.display = '';
+            $('#bShow-' + trid).hide();
+            $('#bHide-' + trid).show();
+        });
+        $('.bHide').click(function (e) {
+            var btn = $(this);
+            var trid = btn.closest('tr').attr('id');
+            $('#executors-' + trid)[0].style.display = 'none';
+            $('#bShow-' + trid).show();
+            $('#bHide-' + trid).hide();
+        });
+        $('.aShow').click(function (e) {
+            var btn = $(this);
+            var trid = btn.closest('tr').attr('id');
+            $('#approvers-' + trid)[0].style.display = '';
+            $('#aShow-' + trid).hide();
+            $('#aHide-' + trid).show();
+        });
+        $('.aHide').click(function (e) {
+            var btn = $(this);
+            var trid = btn.closest('tr').attr('id');
+            $('#approvers-' + trid)[0].style.display = 'none';
+            $('#aShow-' + trid).show();
+            $('#aHide-' + trid).hide();
+        });
+       
+ 
+        
+
+        $('#blockfilters').ready(function (e) {
+                $('.list-filters').css('display', 'block');
+        });
+        var duration = 400;
+        $('#filter').click(function (e) {
+            $('#filter').prop("disabled", true);
+            var dsp = $(".list-filters").css('display');
+            $(".list-filters").slideToggle(duration, function () {
+                if ($(".list-filters").css("display") == "none") {
+                    //$('#filter').text("Расширенный поиск");
+                    $('#filter').prop("disabled", false);
+                } else {
+                    //$('#filter').text("Скрыть фильтр");
+                    $('#filter').prop("disabled", false);
+                }
+            });
+        });
+        
+        $('.details-link-draft').click(function (e) {
+            var btn = $(this);
+            var id = btn.attr('data-value');
+            @*$('#modal-content').load('@Url.Action("DraftHistory", "DraftApprove")?id=' + id, function () {
+                $('#modaldata').modal('show');
+            });*@
+        });
+        $('#btnCreate').click(function (e) {
+            $('#btnCreate').prop("disabled", true);
+             $.ajax({
+                url: '@Url.Action("CreateTusk", "Tusk")',
+                type: "POST",
+                //data: JSON.stringify(Notifications),
+                //dataType: "html",
+                //contentType: 'application/json; charset=utf-8',
+                success: function (msg) {
+                    window.location.replace(msg);
+                    //$("#modal-content").html(msg);
+                    //$('#modaldata').modal('show');
+                    $('#btnCreate').prop("disabled", false);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Ошибка: " + jqXHR + ' || ' + textStatus + ' || ' + errorThrown);
+                    $('#btnCreate').prop("disabled", false);
+                }
+            });
+            //$.post('@Url.Action("CreateTusk", "Tusk")');
+        });
+
+    });
+</script>
+
+<h2 class="h2-otstup-top h2-otstup-bottom h2-bold">@ViewBag.Title</h2>
+<br />
+<button id="btnCreate" class="button add positiv">Создать Задачу</button>
+<br />
+
+@if (@Model != null)
+{
+    using (@Html.BeginForm("Index", "Tusk", FormMethod.Get, new { @class = "form-inline search-form", @id = "searchform" }))
+    {
+        <div>
+            <div class="form-group">
+                <a id="filter" class="button neitral filter btn-nolink">Фильтр</a>
+            </div>
+        </div>
+        <br />
+        <div class="list-filters" id="blockfilters" style="display:none;">
+            <div class="form-group">
+                <label class="control-label">Сортировка</label><br />
+                @Html.DropDownList("sorting", Model.Sorting, new { @class = "combobox", @attr_width = "230px", @id = "sort" })
+            </div>
+            <div class="form-group" style="vertical-align:bottom; margin-bottom:-1px;">
+                <button type="submit" value="Найти" class="button search neitral">Найти</button>
+                <a id="btnClear" alt="Сброс" class="button neitral btn-nolink">Сброс</a>
+            </div>
+        </div>
+    }
+    if (Model.Tusk != null)
+    {
+        @Html.PagedListPager(Model.Tusk, page => Url.Action("Index",
+            new
+            {
+                sortOrder = @ViewBag.CurrentSorting,
+                page,
+                theme = Model.search.Theme,
+                text = Model.search.Text
+            }),
+            new PagedListRenderOptions()
+            {
+                PageCountAndCurrentLocationFormat = "Страница {0} из {1}",
+                DisplayPageCountAndCurrentLocation = true,
+                DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayItemSliceAndTotal = true,
+                ItemSliceAndTotalFormat = "Отображено с {0} по {1} из {2}"
+            });
+    }
+
+    <table class="table table-striped  borders-views" style="border:1px solid #bccee1;">
+        <tr class="ter">
+            @{
+                Georegis.Models.Common.PageTuskViewModel dummyModel = null;
+                string sort = Model.search.SortOrder == "" || Model.search.SortOrder == "desc" ? "asc" : "desc";
+                object htmlArrowUp = new { @class = "glyphicon glyphicon-arrow-up" };
+                object htmlArrowDown = new { @class = "glyphicon glyphicon-arrow-down" };
+            }
+            <th class="fix-col-tema">
+                Идентификатор задачи
+            </th>
+            <th class="fix-col-tema">
+                Тема
+            </th>
+            <th class="fix-col-date">
+                Содержание
+            </th>
+        </tr>
+        @foreach (var item in Model.Tusk)
+        {
+            <tr id="@i">
+                <td>
+                        <text>@item.Id</text>
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Theme))
+                    {
+                        @Html.ActionLink(item.Theme, "DetailsII", new { @id = item.Id })
+
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Без темы", "DetailsII", new { @id = item.Id })
+                    }
+                </td>
+                <td>
+                    @item.Text
+                </td>
+                @*<td>
+                        @item.Approved.ToString()
+                    </td>*@
+            </tr>
+            i++;
+        }
+    </table>
+    <br />
+    if (Model.Tusk != null)
+    {
+        @Html.PagedListPager(Model.Tusk, page => Url.Action("Index", new
+           {
+               sortOrder = @ViewBag.CurrentSorting,
+               page,
+               theme = Model.search.Theme,
+               text = Model.search.Text
+           }),      
+           
+            new PagedListRenderOptions()
+            {
+                PageCountAndCurrentLocationFormat = "Страница {0} из {1}",
+                DisplayPageCountAndCurrentLocation = true,
+                DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayItemSliceAndTotal = true,
+                ItemSliceAndTotalFormat = "Отображено с {0} по {1} из {2}"
+            })
+    }
+    <style type="text/css">
+        .margin {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+
+    <br />
+    <div class="modal fade" tabindex="-1" role="dialog" id="modaldata">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="modal-content">
+
+            </div>
+        </div>
+    </div>
+}
