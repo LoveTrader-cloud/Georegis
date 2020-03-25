@@ -157,6 +157,27 @@ namespace Georegis.Controllers
             }
         }
 
+        public string Execute(DetailExecViewModel model)
+        {
+            string url = Url.Action("Index");
+            try
+            {
+                Finish(model.ExecutorId, CurrentUser.Id);
+                @TempData["alert"] = "alert-success";
+                @TempData["message"] = "Исполнено";
+                return url;
+            }
+            catch (Exception ex)
+            {
+                return Url.Action("Details", new
+                {
+                    id = model.ExecutorId,
+                    message = string.Format("Возникла непредвиденная ошибка: {0}. Трассировка: {1}", ex.Message, ex.StackTrace),
+                    alert = "alert-danger"
+                });
+            }
+        }
+
         #region Вспомогательные методы
 
         private ExecutorDetailsDTO GetExecutor(Guid idExecDep, int curentUserId)
@@ -222,7 +243,53 @@ namespace Georegis.Controllers
 
         }
 
+        private void Finish(Guid executorId, int currensUserId)
+        {
+            var currentExecutor = dbContext.Executors.Find(executorId);
+            var user = dbContext.Users.Find(currensUserId);
 
+            if (currentExecutor.IsCompleted)
+                throw new ValidateException("Работы по данной задаче выполнены", null);
+
+            var status = new Status();
+            status = dbContext.Status.FirstOrDefault(x => x.Value == "Исполнен");
+
+            currentExecutor.Status = status;
+            try
+            {
+                dbContext.Executors.Attach(currentExecutor);
+                dbContext.Entry(currentExecutor).State = EntityState.Modified;
+                dbContext.SaveChanges();
+
+                var execDep = currentExecutor.ExecDep;
+
+                execDep.Status = status;
+
+                dbContext.ExecDeps.Attach(execDep);
+                dbContext.Entry(execDep).State = EntityState.Modified;
+                dbContext.SaveChanges();
+
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors
+                       .SelectMany(x => x.ValidationErrors)
+                       .Select(x => x.ErrorMessage);
+
+                // Join the list to a single string.
+                string fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                string exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                throw new ValidateException(exceptionMessage, null);
+            }
+            catch (Exception ex)
+            {
+                throw new ValidateException(ex.Message, ex.StackTrace);
+            }
+
+        }
 
         private DraftTaskViewModel GetDraftTusk(Guid draftTaskOMId)
         {

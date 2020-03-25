@@ -16,6 +16,34 @@
 <script type="text/javascript" src="~/Scripts/contextmenu-details.js?@DateTime.Now.Millisecond"></script>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnExecute2").click(function (e) {
+            $("#btnExecute2").prop("disabled", true);
+            var btn = $(this);
+
+            var jmodel = new Object();
+            jmodel.ExecutorId = '@Model.ExecutorId';
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Execute")',
+                data: jmodel,
+                success: function (result)
+                {
+                    if (result.indexOf("ERROR") != -1)
+                        alert(result);
+                    $('#data').empty();
+                    window.location.replace(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        });
+    });
+</script>
+
 <style type="text/css">
     .sz-print-form {
         width: 800px;
@@ -63,8 +91,6 @@
     <button type="submit"
             id="btnExecute2"
             value="Исполнить"
-            data-url="@Url.Action("Execute", "Process", new { id = Model.ExecutorId, burl = url })"
-            data-value="@Model.ExecutorId"
             name="submit"
             class="button mark positiv btn-action-modal">
         Исполнить
