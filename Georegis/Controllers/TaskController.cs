@@ -109,7 +109,7 @@ namespace Georegis.Controllers
         public ActionResult Details(Guid id)
         {
 
-            var model = GetDraftOfficeMemo(id);
+            var model = GetDraftTusk(id);
             var deps = from d in dbContext.Departments
                        select d;
             model.DueDate = DateTime.Now;
@@ -238,7 +238,7 @@ namespace Georegis.Controllers
         /// </summary>
         /// <param name="draftTaskOMId"></param>
         /// <returns></returns>
-        private DraftTaskViewModel GetDraftOfficeMemo(Guid draftTaskOMId)
+        private DraftTaskViewModel GetDraftTusk(Guid draftTaskOMId)
         {
             var draftTask = dbContext.DraftTasks.FirstOrDefault(x => x.Id == draftTaskOMId);
             if (draftTask == null)

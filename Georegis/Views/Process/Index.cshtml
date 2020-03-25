@@ -4,7 +4,7 @@
 @{
     /**/
     int i = 0;
-    ViewBag.Title = "Мои задачи";
+    ViewBag.Title = "Задачи на исполнение";
 }
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/layout-form.css" rel="stylesheet" type="text/css" />
@@ -189,12 +189,12 @@
                 <td>
                     @if (!string.IsNullOrEmpty(item.Theme))
                     {
-                        @Html.ActionLink(item.Theme, "DetailsII", new { @id = item.Id })
+                        @Html.ActionLink(item.Theme, "Details", new { @id = item.ExecDepId })
 
                     }
                     else
                     {
-                        @Html.ActionLink("Без темы", "DetailsII", new { @id = item.Id })
+                        @Html.ActionLink("Без темы", "Details", new { @id = item.ExecDepId })
                     }
                 </td>
                 <td>

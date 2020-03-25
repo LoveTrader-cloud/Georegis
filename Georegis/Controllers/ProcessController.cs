@@ -15,8 +15,10 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Task = System.Threading.Tasks.Task;
 
 namespace Georegis.Controllers
 {
@@ -98,7 +100,148 @@ namespace Georegis.Controllers
         }
 
 
+        [Authorize]
+        public ActionResult Details(Guid id, string burl = "", string message = "", string alert = "")
+        {
+            var department = dbContext.Departments.Find(CurrentUser.Department.Id);
+
+            //Надо получить информацию о текущем ExecDep и Executor для текущего пользователя
+            var execDetailsDTO = GetExecutor(id, CurrentUser.Id);
+            if (execDetailsDTO == null)
+            {
+                var error = new ErrorViewModel
+                {
+                    Error = "Докуент не найден",
+                    Massage = "Документ не найден. Скорее всего он удален или был произведен переход по устаревшей ссылке",
+                    Controller = "ProcessController",
+                    Action = "Details",
+                    Id = id.ToString()
+                };
+                return View("Error", error);
+            }
+
+            @TempData["message"] = message;
+            @TempData["alert"] = alert;
+            var DetailExecVM = new DetailExecViewModel()
+            {
+                TuskId = execDetailsDTO.TuskId,
+                ExecutorId = execDetailsDTO.Id,
+                ExecutorStatusState = execDetailsDTO.StatusState,
+                ExecutorStatusValue = execDetailsDTO.StatusValue,
+                ExecDepId = id,
+                PreviousUri = Request.UrlReferrer,
+            };
+
+            DetailExecVM.DraftTusk = GetDraftTusk(DetailExecVM.TuskId);
+
+            DetailExecVM.BackUrl = string.IsNullOrEmpty(burl) && Request.UrlReferrer == null
+                ? Url.Action("Index", "Home")
+                : string.IsNullOrEmpty(burl) ? Request.UrlReferrer.ToString() : burl;
+
+            DetailExecVM.CurrentUrl = Request.Url;
+
+            if (execDetailsDTO.DepartmetnId != department.Id)
+                return View("Details", DetailExecVM);
+
+
+            switch (execDetailsDTO.Type)
+            {
+                case ExecutorType.GroupManager:
+                    return View("DetailsGroupManager", DetailExecVM);
+                case ExecutorType.AcceptApprove:
+                    return View("DetailsChief", DetailExecVM);
+                case ExecutorType.IncomingFilter:
+                    return View("DetailsIncomingFilter", DetailExecVM);
+                default:
+                    return View("Details", DetailExecVM);
+            }
+        }
+
         #region Вспомогательные методы
+
+        private ExecutorDetailsDTO GetExecutor(Guid idExecDep, int curentUserId)
+        {
+            var currentUser = dbContext.Users.Find(curentUserId);
+            var execDep = dbContext.ExecDeps.FirstOrDefault(x => x.Id == idExecDep);
+            if (execDep == null)
+                return null;
+            int currentDepId = currentUser.Department.Id;
+            Executor executor = null;
+            executor = dbContext.Executors
+                .Include(x => x.Status)
+                .OrderByDescending(x => x.Created)
+                .FirstOrDefault(x => x.Request.Id == execDep.Request.Id && x.UserAssign.Id == currentUser.Id
+                && x.Status.State == StatusState.Process);
+            if (executor == null)
+            {
+                executor = dbContext.Executors
+                .Include(x => x.Status)
+                .OrderByDescending(x => x.Created)
+                .FirstOrDefault(x => x.Request.Id == execDep.Request.Id && x.UserAssign.Id == currentUser.Id);
+            }
+
+            ExecutorDetailsDTO exec = new ExecutorDetailsDTO
+            {
+                Id = Guid.Empty,
+                TuskId = execDep.Request.Id,
+                DepartmetnId = execDep.Department.Id
+            };
+
+            if (executor != null)
+            {
+                exec.Id = executor.Id;
+                exec.StatusState = executor.Status.State;
+                exec.StatusId = executor.Status.Id;
+                exec.StatusName = executor.Status.Name;
+                exec.StatusValue = executor.Status.Value;
+                exec.Type = executor.Type;
+            }
+            return exec;
+        }
+
+        public async Task<ActionResult> MainDetails(Guid id)
+        {
+            var model = await Task.Run(() =>
+            {
+                var tuskVm = new DraftTaskViewModel();
+                tuskVm = GetDraftTusk(id);
+                if (tuskVm == null)
+                {
+                    return null;
+                }
+                return tuskVm;
+            });
+            if (model == null)
+            {
+                TempData["alert"] = "alert-danger";
+                TempData["message"] = "Не найдена СЗ с ИД " + id.ToString();
+                return RedirectToAction("Index");
+            }
+
+            return PartialView(model);
+
+        }
+
+
+
+        private DraftTaskViewModel GetDraftTusk(Guid draftTaskOMId)
+        {
+            var draftTask = dbContext.DraftTasks.FirstOrDefault(x => x.Id == draftTaskOMId);
+            if (draftTask == null)
+                return null;
+            /*Создаем автомапер для передачи информации об согласующих и утверждающем внутри подразделения*/
+
+            /*Формируем модель*/
+            var draftTaskVm = new DraftTaskViewModel()
+            {
+                Text = draftTask.Text,
+                Theme = draftTask.Theme,
+                Id = draftTask.Id,
+                DueDate = draftTask.DueDate
+            };
+            /*Мапим согласующих и утверждающего*/
+            return draftTaskVm;
+        }
 
         private PageExecuteDTO GetExecTusk(int currentUserId, int page, int pageSize, TableExecuteDTO search)
         {
@@ -111,6 +254,7 @@ namespace Georegis.Controllers
                 .Select(e => new TableExecuteDTO
                 {
                     Id = e.Request.Id,
+                    ExecDepId = e.ExecDep.Id,
                     Theme = e.Request.Theme,
                     Text = e.Request.Text,
                     StatusValue = e.Status.Value,

@@ -1,0 +1,95 @@
+﻿@model Georegis.Models.ViewModels.DetailExecViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Задача";
+    var url = "";
+    if (!string.IsNullOrEmpty(Model.BackUrl))
+    { url = Model.BackUrl; }
+}
+
+<link href="~/Content/layout-form.css?@DateTime.Now.Millisecond" rel="stylesheet" type="text/css" />
+<link href="~/Content/tabs.css?@DateTime.Now.Millisecond" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/combobox.js?@DateTime.Now.Millisecond"></script>
+<script src="~/Scripts/datetimepicker.js?@DateTime.Now.Millisecond"></script>
+<script type="text/javascript" src="~/Scripts/jquery.async-module.js?@DateTime.Now.Millisecond"></script>
+<script type="text/javascript" src="~/Scripts/contextmenu-details.js?@DateTime.Now.Millisecond"></script>
+
+
+<style type="text/css">
+    .sz-print-form {
+        width: 800px;
+        background-color: white;
+        margin: auto;
+        padding: 10px;
+        min-height: 450px;
+    }
+
+    .sz-text {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .modal-lg {
+        width: 920px;
+    }
+</style>
+
+
+
+
+<div align="right" class="panel-button">
+</div>
+<br />
+
+<div class="zagolovformread">
+    <a href="@Model.CurrentUrl.AbsolutePath" docinfo">Информация о Задаче</a>
+    <div class="icon-dop-function">
+        <a style="text-align:right;" id="btnContextMenu"><img src="~/Content/Images/Icons/null_other_function.png" /></a>
+        @if (string.IsNullOrEmpty(Model.BackUrl.ToString()))
+        {
+            <a href="~/Process/Index" class="no-modal-close" title="Закрыть"></a>
+        }
+        else
+        {
+            <a href="@Model.BackUrl" class="no-modal-close" title="Закрыть"></a>
+        }
+
+    </div>
+
+</div>
+
+<div align="right" class="panel-button">
+    <button type="submit"
+            id="btnExecute2"
+            value="Исполнить"
+            data-url="@Url.Action("Execute", "Process", new { id = Model.ExecutorId, burl = url })"
+            data-value="@Model.ExecutorId"
+            name="submit"
+            class="button mark positiv btn-action-modal">
+        Исполнить
+    </button>
+</div>
+
+<div align="center" class="inf-doc">
+    <div class="row">
+        <table cellpadding="0" cellspacing="0" class="table ourblocks">
+            <tr>
+                <td width="350px">
+                    @Html.Label("Задача")<br />
+
+                    <b>@Model.DraftTusk.Theme</b><br />
+                </td>
+                <td width="350px">
+                    @Html.Label("Содержание")
+                    <br />
+                    @Model.DraftTusk.Text
+                    <br />
+                    @Html.Label("Срок Исполнения")
+                    @Model.DraftTusk.DueDate
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br />

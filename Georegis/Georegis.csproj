@@ -230,6 +230,7 @@
     <Compile Include="Models\ApplicationContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
+    <Compile Include="Models\Common\DTO\ExecutorDetailsDTO.cs" />
     <Compile Include="Models\Common\DTO\PageExecuteDTO.cs" />
     <Compile Include="Models\Common\DTO\PageTuskDTO.cs" />
     <Compile Include="Models\Common\DTO\TableExecuteDTO.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Models\Common\PageTuskViewModel.cs" />
     <Compile Include="Models\Common\TableExecuteViewModel.cs" />
     <Compile Include="Models\Common\TableTuskViewModel.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\ExtNetModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PageInfo.cs" />
@@ -247,6 +249,7 @@
     <Compile Include="Models\ViewModels\DepartmentViewModel.cs" />
     <Compile Include="Models\ViewModels\DraftTaskViewModel.cs" />
     <Compile Include="Models\ViewModels\ExecDepViewModel.cs" />
+    <Compile Include="Models\ViewModels\DetailExecViewModel.cs" />
     <Compile Include="Models\ViewModels\ExecutorViewModel.cs" />
     <Compile Include="Models\ViewModels\ProcessSessionViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
@@ -378,6 +381,9 @@
     <Content Include="Views\Task\ThemeDetails.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
     <Content Include="Views\Process\Index.cshtml" />
+    <Content Include="Views\Process\Details.cshtml" />
+    <Content Include="Views\Process\MainDetails.cshtml" />
+    <Content Include="Views\Process\DetailsGroupManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

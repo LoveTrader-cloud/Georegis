@@ -39,5 +39,7 @@ namespace Georegis.Models.Common.DTO
         /// Направление сортировки
         /// </summary>
         public string SortOrder { get; set; }
+
+        public Guid ExecDepId { get; set; }
     }
 }

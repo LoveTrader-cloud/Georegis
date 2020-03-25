@@ -22,6 +22,8 @@ namespace Georegis.Models.Common
         /// </summary>
         public string Text { get; set; }
 
+        public Guid ExecDepId { get; set; }
+
         /// <summary>
         /// срок исполнения
         /// </summary>
